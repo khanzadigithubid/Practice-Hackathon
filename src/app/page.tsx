@@ -6,7 +6,7 @@ import Pagesix from "@/components/homepage/pagesix";
 import Pagethree from "@/components/homepage/pagethree";
 import Pagetwo from "@/components/homepage/pagetwo";
 
-export default function Home() {
+export default async function Home() {
   return (
     <div className="md:max-w-[1280px] w-full m-auto overflow-hidden">
       <Pageone />
