@@ -40,7 +40,7 @@ export default function ChForm() {
 
         // Example of sending data to an API (uncomment to use)
         try {
-            const response = await fetch(`http://localhost:3000/api/ship-engine/get-rates`, {
+            const response = await fetch(`/api/ship-engine/get-rates`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
