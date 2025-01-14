@@ -35,7 +35,7 @@ export async function POST(request: NextRequest) {
         });
 
         return new Response(JSON.stringify(shipmentDetails), { status: 200 });
-    } catch (error) {
+    } catch  {
         return new Response(JSON.stringify({ error: "Error Occured" }))
     }
 }
