@@ -1,5 +1,6 @@
 import Cartlist from "@/components/cart/cartlist"
 import { arr } from "@/utils/productdata"
+import Link from "next/link"
 
 const Cart = () => {
   return (
@@ -39,9 +40,11 @@ const Cart = () => {
             <span>Subtotal:</span>
             <span>$1750</span>
           </div>
+          <Link href="/checkout">
           <div className="w-full flex justify-center py-2">
             <button className="px-10 mt-2 py-3 bg-primRed rounded-sm text-white text-sm">Procees to checkout</button>
           </div>
+          </Link>
         </div>
       </div>
     </div>
