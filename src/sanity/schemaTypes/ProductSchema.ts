@@ -1,3 +1,4 @@
+import { Rule } from '@sanity/types';  // Import Rule type from Sanity
 
 const apiProductsSchema = {
     name: 'APIProducts',
@@ -42,7 +43,7 @@ const apiProductsSchema = {
             name: 'product_rating',
             title: 'Rating',
             type: 'number',
-            validation: (Rule) => Rule.min(0).max(100), 
+            validation: (Rule: Rule) => Rule.min(0).max(100), // Explicitly typing Rule
         },
     ],
 };
