@@ -1,3 +1,9 @@
+// Import necessary components
+import Image from 'next/image';
+import Details from "@/components/productdet/details";
+import PageIntro from "@/components/pageintro";
+import Card from "@/components/card";
+
 // Define the type for the product data
 interface Product {
   _id: string;
