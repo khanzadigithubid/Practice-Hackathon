@@ -96,7 +96,7 @@ const ProdDetails = async ({ params }: { params: { productid: string } }) => {
         <PageIntro intro="Related Item" nav="none" />
         <div className="w-full flex flex-wrap sm:gap-6 gap-3 justify-center my-8 mb-20">
           {/* Pass the same data or related items to the Card component */}
-          <Card arr={data} />
+          <Card/>
         </div>
       </div>
     );

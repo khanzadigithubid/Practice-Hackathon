@@ -2,33 +2,6 @@ import Image from "next/image";
 import Card from "../card";
 import PageIntro from "../pageintro";
 
-const data = [
-    {
-        title: "Breed Dry Dog Food",
-        image: "/products/dogfood.png",
-        price: 100,
-        id: 1
-    },
-    {
-        title: "CANON EOS DSLR Camera",
-        image: "/products/camera.png",
-        price: 360,
-        id: 2
-    },
-    {
-        title: "ASUS FHD Gaming Laptop",
-        image: "/products/laptop.png",
-        price: 700,
-        id: 3
-    },
-    {
-        title: "Curology Product Set ",
-        image: "/products/curology.png",
-        price: 500,
-        id: 4
-    }
-]
-
 const Pagefour = () => {
     return (
         <div className="pb-10 p-3">
