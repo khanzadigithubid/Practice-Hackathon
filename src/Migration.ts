@@ -1,16 +1,16 @@
 import { client } from "./sanity/lib/client"; // Sanity client import jo backend ke sath kaam karega
 
 // Product ka type define kar rahe hain jo har product ki properties ko specify karega
-type Product = {
-    product_name: string; // Product ka naam
-    product_description: string; // Product ka description
-    product_price: number; // Product ka price
-    product_sizes: string[]; // Product ke available sizes
-    product_image: string; // Product ki image ka URL
-    product_rating: number; // Product ka rating
-    product_stock_quantity: number; // Product ka stock quantity
-    product_category?: string; // Product ki category (optional)
-};
+// type Product = {
+//     product_name: string; // Product ka naam
+//     product_description: string; // Product ka description
+//     product_price: number; // Product ka price
+//     product_sizes: string[]; // Product ke available sizes
+//     product_image: string; // Product ki image ka URL
+//     product_rating: number; // Product ka rating
+//     product_stock_quantity: number; // Product ka stock quantity
+//     product_category?: string; // Product ki category (optional)
+// };
 
 // Function jo API se data fetch kar ke Sanity par migrate karega
 export const fetchData = async () => {
