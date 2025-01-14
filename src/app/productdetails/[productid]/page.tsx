@@ -15,7 +15,7 @@ const ProdDetails = async ({ params }: { params: { productid: string } }) => {
   }`;
 
     const data = await client.fetch(query);
-    const index = data.findIndex((item: any) => item._id === params.productid);
+    const index = data.findIndex((item) => item._id === params.productid);
     const product = data[index];
 
     if (product)
