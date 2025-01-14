@@ -1,4 +1,4 @@
-mport Card from "@/components/card";
+import Card from "@/components/card";
 import PageIntro from "@/components/pageintro";
 import Image from "next/image";
 // import { arr } from "@/utils/productdata";
