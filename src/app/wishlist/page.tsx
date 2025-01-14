@@ -10,13 +10,8 @@ interface Product {
   price: number;
 }
 
-// Define the type for the props, which will include the fetched data
-interface WishListProps {
-  data: Product[];
-}
-
-// Fetch data using getServerSideProps for server-side fetching
-export async function getServerSideProps() {
+// Fetch data using an async function directly in the page component
+const WishList = async () => {
   const query = `*[_type == "Prodatas"]{
     _id,
     title,
@@ -24,16 +19,9 @@ export async function getServerSideProps() {
     price
   }`;
 
-  const data = await client.fetch(query);
+  // Fetch the data server-side before rendering
+  const data: Product[] = await client.fetch(query);
 
-  return {
-    props: {
-      data, // Pass the fetched data as a prop to the page component
-    },
-  };
-}
-
-const WishList: React.FC<WishListProps> = ({ data }) => {
   return (
     <div className="md:max-w-[1280px] w-full m-auto min-h-[80vh] py-20 p-3">
       <div className="flex justify-between items-center">
