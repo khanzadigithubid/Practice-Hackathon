@@ -1,4 +1,5 @@
-export default {
+
+const apiProductsSchema = {
     name: 'APIProducts',
     title: 'APIProducts',
     type: 'document',
@@ -41,7 +42,9 @@ export default {
             name: 'product_rating',
             title: 'Rating',
             type: 'number',
-            validation: (Rule: any) => Rule.min(0).max(100),
+            validation: (Rule) => Rule.min(0).max(100), 
         },
     ],
 };
+
+export default apiProductsSchema;
