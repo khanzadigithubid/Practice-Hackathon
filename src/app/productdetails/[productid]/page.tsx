@@ -1,8 +1,9 @@
-// Import necessary components
-import Image from 'next/image';
-import Details from "@/components/productdet/details";
+mport Card from "@/components/card";
 import PageIntro from "@/components/pageintro";
-import Card from "@/components/card";
+import Image from "next/image";
+// import { arr } from "@/utils/productdata";
+import Details from "@/components/productdet/details";
+import { client } from "@/sanity/lib/client";
 
 // Define the type for the product data
 interface Product {
