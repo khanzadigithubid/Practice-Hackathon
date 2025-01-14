@@ -1,12 +1,10 @@
-"use client"
-
-import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import React from 'react'
 
 // Define the type for a product
 interface Product {
-  id: number;
+  _id: string;
   title: string;
   image: string;
   price: number;
@@ -22,7 +20,7 @@ const Card: React.FC<CardProps> = ({ arr }) => {
     <>
       {arr.map((item) => {
         return (
-          <Link href={`/productdetails/${item.id}`} key={item.id} className='sm:w-60 xs:w-52 w-36'>
+          <Link href={`/productdetails/${item._id}`} key={item._id} className='sm:w-60 xs:w-52 w-36'>
             <div className='sm:w-60 sm:h-56 xs:w-52 xs:h-44 w-36 h-40 bg-[#F5F5F5] p-10 relative group'>
               <Image
                 src={item.image}
