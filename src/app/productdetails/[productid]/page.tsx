@@ -1,7 +1,6 @@
 import Card from "@/components/card";
 import PageIntro from "@/components/pageintro";
 import Image from "next/image";
-// import { arr } from "@/utils/productdata";
 import Details from "@/components/productdet/details";
 import { client } from "@/sanity/lib/client";
 
@@ -22,7 +21,7 @@ const ProdDetails = async ({ params }: { params: { productid: string } }) => {
   }`;
 
   // Fetch data from the client
-  const data: Product[] = await client.fetch(query);  // Type the data as Product[]
+  const data: Product[] = await client.fetch(query); // Type the data as Product[]
 
   // Find the index of the product matching the productid
   const index = data.findIndex((item) => item._id === params.productid);
@@ -94,13 +93,21 @@ const ProdDetails = async ({ params }: { params: { productid: string } }) => {
           <Details product={product} />
         </div>
 
-        <PageIntro intro="Related Item" nav="none"></PageIntro>
+        <PageIntro intro="Related Item" nav="none" />
         <div className="w-full flex flex-wrap sm:gap-6 gap-3 justify-center my-8 mb-20">
-          <Card />
+          {/* Pass the same data or related items to the Card component */}
+          <Card arr={data} />
         </div>
       </div>
     );
   }
+
+  // Handle the case when the product is not found
+  return (
+    <div>
+      <p>Product not found!</p>
+    </div>
+  );
 };
 
 export default ProdDetails;
