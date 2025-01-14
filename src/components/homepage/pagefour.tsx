@@ -34,7 +34,7 @@ const Pagefour = () => {
         <div className="pb-10 p-3">
             <PageIntro intro={"This Month"} text={"Best Selling Products"} nav={"button"}></PageIntro>
             <div className="w-full flex flex-wrap justify-center gap-3 py-4">
-                <Card arr={data} />
+                <Card/>
             </div>
             <div className="w-full xs:h-[500px] h-[400px] mt-20 relative">
                 <Image src={"/banners/page-one/bannerbg-2.png"} alt="" width={1170} height={500} className="w-full h-full object-cover absolute top-0 right-0 -z-10" />

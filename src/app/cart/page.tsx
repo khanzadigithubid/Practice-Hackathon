@@ -1,5 +1,4 @@
 import Cartlist from "@/components/cart/cartlist"
-import { arr } from "@/utils/productdata"
 import Link from "next/link"
 
 const Cart = () => {
@@ -12,7 +11,7 @@ const Cart = () => {
         <span className="text-base m-auto">Subtotal</span>
       </div>
       <div className="sm:space-y-6">
-        <Cartlist arr={arr} />
+        <Cartlist />
       </div>
 
       <div className="w-full flex justify-between items-center py-12">

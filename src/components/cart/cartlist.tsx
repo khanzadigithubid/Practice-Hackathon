@@ -1,14 +1,24 @@
 import Image from "next/image"
 import Cartquantitycontroller from "./cartquantitycontroller";
 import { IoMdClose } from "react-icons/io";
+import { client } from "@/sanity/lib/client";
 
-const Cartlist = (arr: { arr: { title: string, image: string, price: number }[] }) => {
+const Cartlist = async () => {
+    // Sanity query to fetch product data
+    const query = `*[_type == "Prodatas"]{
+    _id,
+    title,
+    "image": image.asset->url,
+    price
+  }`;
 
+    // Fetch the data
+    const data = await client.fetch(query);
     return (
         <>
-            {arr.arr.map((data: { title: string, image: string, price: number }, index) => {
+            {data.map((data: { _id: string, image: string,title:string,price:number }) => {
                 return (
-                    <div className="grid grid-cols-4 w-full sm:py-7 py-4 relative group" key={index}>
+                    <div className="grid grid-cols-4 w-full sm:py-7 py-4 relative group" key={data._id}>
                         <span className="absolute top-2 xs:left-6 left-1 xs:w-5 xs:h-5 w-4 h-4 rounded-full bg-red-500 hidden group-hover:flex text-white p-1 justify-center items-center">
                             <IoMdClose />
                         </span>
