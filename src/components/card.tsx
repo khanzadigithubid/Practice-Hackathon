@@ -5,8 +5,16 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React, { useEffect, useState } from 'react'
 
-const Card = () => {
-  const [data, setData] = useState<any[]>([]); // State to hold the fetched data
+// Define a type for the product data
+interface Product {
+  _id: string;
+  title: string;
+  image: string;
+  price: number;
+}
+
+const Card: React.FC = () => {
+  const [data, setData] = useState<Product[]>([]); // Use the Product type for state
   const [loading, setLoading] = useState(true); // Loading state
 
   // Fetch data using useEffect
@@ -20,7 +28,7 @@ const Card = () => {
       }`;
 
       try {
-        const fetchedData = await client.fetch(query); // Fetch data from Sanity
+        const fetchedData: Product[] = await client.fetch(query); // Specify the type of fetched data
         setData(fetchedData); // Set the fetched data to the state
         setLoading(false); // Set loading to false once data is fetched
       } catch (error) {
@@ -39,7 +47,7 @@ const Card = () => {
 
   return (
     <>
-      {data.map((item: { _id: string, title: string, image: string, price: number }) => {
+      {data.map((item) => {
         return (
           <Link href={`/productdetails/${item._id}`} key={item._id} className='sm:w-60 xs:w-52 w-36'>
             <div className='sm:w-60 sm:h-56 xs:w-52 xs:h-44 w-36 h-40 bg-[#F5F5F5] p-10 relative group'>
@@ -93,3 +101,4 @@ const Card = () => {
 }
 
 export default Card;
+
