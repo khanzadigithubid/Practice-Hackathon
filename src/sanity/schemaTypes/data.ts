@@ -1,4 +1,4 @@
-export default {
+const prodatasSchema = {
     name: 'Prodatas',
     title: 'data',
     type: 'document',
@@ -19,7 +19,9 @@ export default {
             type: 'image',
             options: {
                 hotspot: true,
-            }
+            },
         },
     ],
 };
+
+export default prodatasSchema;
