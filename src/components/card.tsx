@@ -1,55 +1,28 @@
 "use client"
 
-import { client } from '@/sanity/lib/client'
+import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import React, { useEffect, useState } from 'react'
 
-// Define a type for the product data
+// Define the type for a product
 interface Product {
-  _id: string;
+  id: number;
   title: string;
   image: string;
   price: number;
 }
 
-const Card: React.FC = () => {
-  const [data, setData] = useState<Product[]>([]); // Use the Product type for state
-  const [loading, setLoading] = useState(true); // Loading state
+// Define the type for the props, which includes an array of products
+interface CardProps {
+  arr: Product[];  // This is the prop that will accept the data array
+}
 
-  // Fetch data using useEffect
-  useEffect(() => {
-    const fetchData = async () => {
-      const query = `*[_type == "Prodatas"]{
-        _id,
-        title,
-        "image": image.asset->url,
-        price
-      }`;
-
-      try {
-        const fetchedData: Product[] = await client.fetch(query); // Specify the type of fetched data
-        setData(fetchedData); // Set the fetched data to the state
-        setLoading(false); // Set loading to false once data is fetched
-      } catch (error) {
-        console.error("Error fetching data:", error);
-        setLoading(false); // Stop loading in case of an error
-      }
-    };
-
-    fetchData();
-  }, []); // Empty dependency array means this effect runs once when the component mounts
-
-  // Show a loading indicator while data is being fetched
-  if (loading) {
-    return <div>Loading...</div>;
-  }
-
+const Card: React.FC<CardProps> = ({ arr }) => {
   return (
     <>
-      {data.map((item) => {
+      {arr.map((item) => {
         return (
-          <Link href={`/productdetails/${item._id}`} key={item._id} className='sm:w-60 xs:w-52 w-36'>
+          <Link href={`/productdetails/${item.id}`} key={item.id} className='sm:w-60 xs:w-52 w-36'>
             <div className='sm:w-60 sm:h-56 xs:w-52 xs:h-44 w-36 h-40 bg-[#F5F5F5] p-10 relative group'>
               <Image
                 src={item.image}
@@ -77,19 +50,17 @@ const Card: React.FC = () => {
             <div className='flex items-center gap-2 xs:text-base text-sm'>
               <span className='text-red-500'>${item.price}</span>
               <div className='flex gap-1'>
-                {[1, 2, 3, 4, 5].map((index) => {
-                  return (
-                    <div className='w-3 h-3 overflow-hidden' key={index}>
-                      <Image
-                        src={"/icons/star.png"}
-                        alt="star"
-                        width={600}
-                        height={600}
-                        className='w-full h-full object-cover'
-                      />
-                    </div>
-                  )
-                })}
+                {[1, 2, 3, 4, 5].map((index) => (
+                  <div className='w-3 h-3 overflow-hidden' key={index}>
+                    <Image
+                      src={"/icons/star.png"}
+                      alt="star"
+                      width={600}
+                      height={600}
+                      className='w-full h-full object-cover'
+                    />
+                  </div>
+                ))}
               </div>
               <span className="text-zinc-400 text-sm font-medium">(55)</span>
             </div>
@@ -97,8 +68,7 @@ const Card: React.FC = () => {
         )
       })}
     </>
-  );
+  )
 }
 
 export default Card;
-
