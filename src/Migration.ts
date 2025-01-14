@@ -56,7 +56,7 @@ export const fetchData = async () => {
                     // Product ki category
                 });
 
-                console.log("Migrated Product:", title); // Success ka log
+                console.log("Migrated Product:", title); // Success 
             } catch (err) {
                 // Agar kisi specific product migration mein error aaye, uska log karega
                 console.error(`Failed to migrate product: ${title}`, err);
